@@ -13,7 +13,7 @@ export const section3 = [
           'added 812 packages in 24s',
         ]},
         { cmd: 'npm run docker:db          # Postgres 15 in Docker on 5432', out: [
-          { t: ' ✔ Container kshop-db-1  Started', k: 'ok' },
+          { t: ' ✔ Container acmeshop-db-1  Started', k: 'ok' },
           'listening on 0.0.0.0:5432',
         ]},
         { cmd: 'npm run db:init:seed       # migrate + seed', out: [
@@ -27,14 +27,14 @@ export const section3 = [
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: kshop
-      POSTGRES_PASSWORD: kshop
-      POSTGRES_DB: kshop
+      POSTGRES_USER: acmeshop
+      POSTGRES_PASSWORD: acmeshop
+      POSTGRES_DB: acmeshop
     volumes:
-      - kshop-db:/var/lib/postgresql/data
+      - acmeshop-db:/var/lib/postgresql/data
 
 volumes:
-  kshop-db:` },
+  acmeshop-db:` },
       { type: 'callout', kind: 'warn', text: 'The init script is **fatal on a connection failure everywhere**. A previous version exited `0` outside production, which hid misconfigurations for months — a silent success is worse than a loud failure.' },
       { type: 'quiz', questions: [
         { q: 'What runs in Docker for local development?', options: ['Everything', 'Only Postgres — backend and frontend stay native', 'Only the backend', 'Nothing'], answer: 1,
@@ -91,7 +91,7 @@ volumes:
     blocks: [
       { type: 'ul', items: [
         '**Startup** runs a migration-status check — production **exits 1** if a migration is pending.',
-        '**Tests** use a real Postgres database (`kshop_test`), not mocks. Worker setup carefully avoids disconnecting a shared client while other files are still running.',
+        '**Tests** use a real Postgres database (`acmeshop_test`), not mocks. Worker setup carefully avoids disconnecting a shared client while other files are still running.',
         '**CI** starts a Postgres service container, then `migrate deploy` → `generate` → `seed`.',
         '**Production** deploy order is strict: wake Neon → `migrate deploy` with `DIRECT_URL` (3 attempts) → deploy to Vercel.',
       ]},
@@ -166,9 +166,9 @@ deploy to Vercel        (new code starts serving traffic)` },
         ]},
       { type: 'terminal', name: 'bash', hint: 'type any command from the table above',
         commands: {
-          'npm run docker:db': [{ t: ' ✔ Container kshop-db-1  Started (Postgres 15 on 5432)', k: 'ok' }],
+          'npm run docker:db': [{ t: ' ✔ Container acmeshop-db-1  Started (Postgres 15 on 5432)', k: 'ok' }],
           'npm run db:init:seed': ['Applying 23 migrations… done', { t: 'Seeded 12 products, 3 shipping rates', k: 'ok' }],
-          'npm run db:reset': [{ t: 'Dropped, re-created, migrated, and re-seeded kshop', k: 'ok' }],
+          'npm run db:reset': [{ t: 'Dropped, re-created, migrated, and re-seeded acmeshop', k: 'ok' }],
           'npm run db:init:check': [{ t: '✓ schema is current — no pending migrations', k: 'ok' }],
           'npm run prisma:migrate': ['✔ created + applied a new migration, client regenerated'],
           'npm run prisma:migrate:deploy': [{ t: 'All migrations have been successfully applied.', k: 'ok' }],

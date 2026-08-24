@@ -27,7 +27,7 @@ export const section1 = [
           'Default Engines Hash    : a1b2c3…',
         ]},
         { cmd: 'npm ls prisma @prisma/client', out: [
-          'kshop@1.0.0',
+          'acmeshop@1.0.0',
           '├── prisma@6.19.3',
           '└── @prisma/client@6.19.3',
           { t: '(CLI and client match — good)', k: 'ok' },
@@ -112,10 +112,10 @@ model ConsumedPayment {
       { type: 'p', text: 'Pick an operation and a connection string. Watch the verdict — normal query + pooled is correct, but a schema change through the pooler fails silently.' },
       { type: 'routing' },
       { type: 'code', name: '.env', lang: 'bash', code: `# pooled — for the app's normal traffic
-DATABASE_URL="postgresql://user:pass@ep-cool-123-pooler.eu.neon.tech/kshop?sslmode=require"
+DATABASE_URL="postgresql://user:pass@ep-cool-123-pooler.eu.neon.tech/acmeshop?sslmode=require"
 
 # direct — for migrations / DDL only
-DIRECT_URL="postgresql://user:pass@ep-cool-123.eu.neon.tech/kshop?sslmode=require"` },
+DIRECT_URL="postgresql://user:pass@ep-cool-123.eu.neon.tech/acmeshop?sslmode=require"` },
       { type: 'quiz', questions: [
         { q: 'Schema changes (DDL) in production must use…', options: ['the pooled `DATABASE_URL`', 'the direct `DIRECT_URL`', 'either URL', 'a SQLite fallback'], answer: 1,
           explain: 'DDL must use the direct, unpooled `DIRECT_URL`. Through the pooler it fails silently.' },
