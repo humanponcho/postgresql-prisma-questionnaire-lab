@@ -67,7 +67,7 @@ src/
 
 ## Deploy to GitHub Pages
 
-A workflow at `.github/workflows/deploy.yml` builds and publishes on every push to `main`. In the repo, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**. The site is then served at `https://<user>.github.io/postgresql-prisma-questionnaire-lab/`.
+A workflow at `.github/workflows/deploy.yml` builds and publishes on every push to `master`. In the repo, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**. The site is then served at `https://<user>.github.io/postgresql-prisma-questionnaire-lab/`.
 
 ## Credits
 
